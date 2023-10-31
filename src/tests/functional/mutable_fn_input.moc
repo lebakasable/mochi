@@ -1,0 +1,11 @@
+fn foo(u64: mut n) {
+    n println
+    12345 *n !
+    n println
+}
+
+fn main() {
+
+    0 foo
+
+}

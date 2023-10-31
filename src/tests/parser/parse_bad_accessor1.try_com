@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "[src/tests/parser/parse_bad_accessor1.moc:2:10] Error: Expected either an identifier or `<` after `::`, but found `[` instead.\n"
+}

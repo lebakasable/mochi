@@ -1,0 +1,8 @@
+fn main() {
+
+    12345 as [mut number]
+    &number @ println
+    *number @ println
+    54321 *number !
+    &number @ println
+}

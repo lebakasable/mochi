@@ -1,0 +1,22 @@
+fn main() {
+
+    10 as [x] {
+
+        x as [y]
+        y println
+        x as [z] {
+            z println
+        }
+        x println
+    }
+
+    20 as [x] {
+        x as [y]
+        y println
+        x as [z] {
+            z println
+        }
+        x println
+    }
+
+}

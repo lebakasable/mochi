@@ -1,0 +1,13 @@
+fn foo() -> [u64] {
+
+    while 42 return do {
+        "unreachable" println
+    }
+
+}
+
+fn main() {
+
+    foo println
+
+}

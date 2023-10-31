@@ -1,0 +1,4 @@
+
+include "std/fmt/fmt.moc"
+include "std/fmt/to_string.moc"
+include "std/fmt/write.moc"

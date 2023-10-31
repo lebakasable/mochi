@@ -1,0 +1,66 @@
+include "std/sys/prelude.moc"
+include "std/fmt/prelude.moc"
+include "std/str.moc"
+include "std/ops/prelude.moc"
+include "std/arr.moc"
+include "std/file.moc"
+include "std/const_arr.moc"
+include "std/print.moc"
+include "std/builtin/bool.moc"
+include "std/builtin/char.moc"
+include "std/builtin/u8.moc"
+include "std/builtin/u64.moc"
+include "std/option.moc"
+include "std/result.moc"
+include "std/alloc.moc"
+include "std/vec.moc"
+include "std/string.moc"
+
+fn drop<T>(T: t) {}
+fn dup<T>(T: t) -> [T T]{ t t }
+fn swap<A B>(A: a B: b) -> [B A] { b a }
+fn over<A B>(A: a B: b) -> [A B A] { a b a }
+fn ptr+<T>(&T: ptr u64: n) -> [&T] {
+    ptr cast(u64) sizeOf(T) n * + cast(&T) 
+}
+fn ptr+_mut<T>(*T: ptr u64: n) -> [*T] {
+    ptr cast(u64) sizeOf(T) n * + cast(*T) 
+}
+fn ptr-<T>(*T: ptr u64: n) -> [*T] {
+    ptr cast(u64) sizeOf(T) n * - cast(*T) 
+}
+fn ptr-diff<T>(*T: ptr1 *T:  ptr2) -> [u64] {
+    ptr1 cast(u64)
+    ptr2 cast(u64)
+    - sizeOf(T) /
+}
+fn memset<T>(T: value Arr<T>: range) {
+    0 while dup range::size < do {
+        as [i]
+        value range::data i ptr+_mut !
+        i 1 +
+    } drop
+}
+fn memcpy<T>(u64: n &T: src *T: dest) {
+    0 while dup n < do {
+        as [i]
+        src i ptr+ @
+        dest i ptr+_mut !
+        i 1 + 
+    } drop
+}
+fn lnot(bool) -> [bool] { if { false } else { true } }
+fn land(bool: a bool: b) -> [bool] {
+    a if {
+        b if { true } else { false }
+    } else {
+        false
+    }
+}
+fn lor(bool: a bool: b) -> [bool] {
+    a if {
+        true
+    } else {
+        b if { true } else { false }
+    }
+}

@@ -1,0 +1,4 @@
+interface Add<A B> {
+    _: Output
+    fn Op.add(A B) -> [Output]
+}
