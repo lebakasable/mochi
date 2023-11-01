@@ -81,11 +81,11 @@ impl:
         self::len @ 1- self Vec.get
     }
 
-    fn Vec.capacity<T>(&Vec<T>: self) -> [u64] {
+    inline fn Vec.capacity<T>(&Vec<T>: self) -> [u64] {
         self::slice::size @
     }
 
-    fn Vec.len<T>(&Vec<T>: self) -> [u64] {
+    inline fn Vec.len<T>(&Vec<T>: self) -> [u64] {
         self::len @
     }
 

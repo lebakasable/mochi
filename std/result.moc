@@ -4,9 +4,9 @@ enum struct Result<T E> {
     
 impl:
 
-    fn Result.Ok<T E>(T) -> [Result<T E>] cast(Result<T E>::Ok)
+    inline fn Result.Ok<T E>(T) -> [Result<T E>] cast(Result<T E>::Ok)
 
-    fn Result.Err<T E>(E) -> [Result<T E>] cast(Result<T E>::Err)
+    inline fn Result.Err<T E>(E) -> [Result<T E>] cast(Result<T E>::Err)
 
     fn Result.is_ok<T E>(&Result<T E>) -> [bool] {
         @ match {
@@ -15,15 +15,15 @@ impl:
         }
     }
     
-    fn Result.is_err<T E>(&Result<T E>) -> [bool] {
+    inline fn Result.is_err<T E>(&Result<T E>) -> [bool] {
         Result.is_ok lnot 
     }
 
-    fn Result.take_is_ok<T E>(Result<T E>: self) -> [bool] {
+    inline fn Result.take_is_ok<T E>(Result<T E>: self) -> [bool] {
         &self Result.is_ok
     }
 
-    fn Result.take_is_err<T E>(Result<T E>: self) -> [bool] {
+    inline fn Result.take_is_err<T E>(Result<T E>: self) -> [bool] {
         &self Result.is_err
     }
 

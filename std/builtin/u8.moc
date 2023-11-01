@@ -1,6 +1,6 @@
 
 impl Write<u8> {
-    fn write(u8: n u64: fd) {
+    inline fn write(u8: n u64: fd) {
         n cast(u64) fd write
     }
 }

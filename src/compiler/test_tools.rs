@@ -10,12 +10,12 @@ struct OutputSummary {
 
 #[cfg(debug_assertions)]
 fn cargo_run_flags(file: &str) -> Vec<&str> {
-    vec!["r", "-q", "--", file]
+    vec!["r", "-q", "--", file, "-a"]
 }
 
 #[cfg(not(debug_assertions))]
 fn cargo_run_flags(file: &str) -> Vec<&str> {
-    vec!["r", "-q", "--release", "--", file]
+    vec!["r", "-q", "--release", "--", file, "-a"]
 }
 
 #[allow(dead_code)]

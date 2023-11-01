@@ -10,7 +10,7 @@ struct Chunk {
     pub *Block: start
 }
 
-fn Chunk.next(*Block: blk_p) -> [*Block] {
+inline fn Chunk.next(*Block: blk_p) -> [*Block] {
     blk_p @ as [blk]
     blk_p cast(u64) blk::arr::size + sizeOf(Block) + cast(*Block)
 }
@@ -45,9 +45,9 @@ fn Heap.debug_summary() {
 
 }
 
-fn PAGE_SIZE() -> [u64] { 4096 }
-fn bytes_to_pages(u64) -> [u64] { PAGE_SIZE / 1 + }
-fn align(u64: n) -> [u64] { n sizeOf(Block) + bytes_to_pages PAGE_SIZE * }
+inline fn PAGE_SIZE() -> [u64] { 4096 }
+inline fn bytes_to_pages(u64) -> [u64] { PAGE_SIZE / 1 + }
+inline fn align(u64: n) -> [u64] { n sizeOf(Block) + bytes_to_pages PAGE_SIZE * }
 
 // [(N ptr bool)[ .. data ..  ](N ptr bool)[ .. data .. ] ... ]
 //      |-------^                  |-------^
@@ -279,7 +279,7 @@ fn free<T>(Arr<T>: arr) {
 
 }
 
-fn free_obj<T>(*T: ptr) {
+inline fn free_obj<T>(*T: ptr) {
     sizeOf(T) ptr cast(Arr) free
 }
 

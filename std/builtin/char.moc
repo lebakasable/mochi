@@ -1,4 +1,4 @@
-fn char.as_str(&char) -> [Str] {
+inline fn char.as_str(&char) -> [Str] {
     1 swap cast(Str)
 }
 

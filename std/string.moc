@@ -18,20 +18,20 @@ impl:
         chars cast(String)
     }
 
-    fn String.null_terminate(Str: s) -> [String] {
+    inline fn String.null_terminate(Str: s) -> [String] {
         s String.new 
         '\0' String.push
     }
 
-    fn String.clone(&String: self) -> [String] {
+    inline fn String.clone(&String: self) -> [String] {
         self String.as_str String.new
     }
 
-    fn String.delete(&String: self) {
+    inline fn String.delete(&String: self) {
         self::chars Vec.delete
     }
 
-    fn String.size(&String: self) -> [u64] {
+    inline fn String.size(&String: self) -> [u64] {
         self::chars Vec.len
     }
 
@@ -67,22 +67,22 @@ impl:
         &other String.delete
     } 
 
-    fn String.at(u64: idx &String: self) -> [Option<char>] {
+    inline fn String.at(u64: idx &String: self) -> [Option<char>] {
         idx self::chars Vec.at
     }
 }
 
 impl ToString<String> {
-    fn to_string(String) -> [String] {}
+    inline fn to_string(String) -> [String] {}
 }
 
 impl ToString<&String> {
-    fn to_string(&String) -> [String] { String.clone }
+    inline fn to_string(&String) -> [String] { String.clone }
 }
 
 
 impl Write<String> {
-    fn write(String: s u64: fd) {
+    inline fn write(String: s u64: fd) {
         &s String.as_str fd write
         &s String.delete
     }

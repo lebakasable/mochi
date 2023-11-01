@@ -3,7 +3,7 @@ struct Str {
     pub &char: data
 impl:
 
-    fn Str.substr(u64: start u64: len Str: s) -> [Str] {
+    inline fn Str.substr(u64: start u64: len Str: s) -> [Str] {
         len s::data start ptr+ cast(Str)
     } 
 
@@ -36,15 +36,15 @@ impl:
 }
 
 impl Write<Str> {
-    fn write(Str: s u64: fd) {
+    inline fn write(Str: s u64: fd) {
         s::size s::data fd sys_write drop
     }
 }
 
 impl ToString<Str> {
-    fn to_string(Str) -> [String] { String.new } 
+    inline fn to_string(Str) -> [String] { String.new } 
 }
 
 impl Format<Str> {
-    fn fmt(String Str) -> [String] { String.push_str }
+    inline fn fmt(String Str) -> [String] { String.push_str }
 }

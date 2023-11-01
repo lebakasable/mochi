@@ -24,7 +24,7 @@ impl:
         cast(File)
     }
 
-    fn File.close(File: file) {
+    inline fn File.close(File: file) {
         file::fd sys_close drop
     }
 
