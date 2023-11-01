@@ -68,7 +68,7 @@ pub fn run_test(
 
     if output.status.success() {
         let output = summarize_output(
-            &run_command(format!("./{file_base}",).as_str(), vec![], &file, false).unwrap(),
+            &run_command(format!("./{directory}/{file_base}",).as_str(), vec![], &file, false).unwrap(),
         );
 
         let run_path = if let Some(dir) = results_dir {

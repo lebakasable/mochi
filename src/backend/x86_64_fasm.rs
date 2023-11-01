@@ -334,11 +334,12 @@ impl super::CodeGen for X86_64 {
     }
 
     fn open(file: &mut std::fs::File) -> Result<(), std::io::Error> {
-        writeln!(file, "segment .text")
+        writeln!(file, "format ELF64 executable")?;
+        writeln!(file, "segment readable executable")
     }
 
     fn entry(file: &mut std::fs::File) -> Result<(), std::io::Error> {
-        writeln!(file, "global _start")?;
+        writeln!(file, "entry _start")?;
         writeln!(file, "_start: ")?;
         writeln!(file, "  mov  qword [frame_start_ptr], frame_stack_end")?;
         writeln!(file, "  mov  qword [frame_end_ptr], frame_stack_end")?;
@@ -359,17 +360,18 @@ impl super::CodeGen for X86_64 {
         data: &std::collections::HashMap<String, InitData>,
     ) -> Result<(), std::io::Error> {
         writeln!(file)?;
-        writeln!(file, "segment .data")?;
+        writeln!(file, "segment readable writeable")?;
         for (id, data) in data {
             match data {
                 InitData::String(s) => {
                     write!(file, "  {id}: db ")?;
                     if !s.is_empty() {
-                        s.as_bytes()
-                            .iter()
-                            .for_each(|b| write!(file, "{b:#x}, ").unwrap());
+                        for (i, b) in s.as_bytes().iter().enumerate() {
+                            if i > 0 { write!(file, ", ")? }
+                            write!(file, "{b:#x}")?;
+                        }
                     } else {
-                        write!(file, "0x00, ")?;
+                        write!(file, "0x00")?;
                     }
                 }
                 InitData::Arr { size, pointer } => {
@@ -386,15 +388,15 @@ impl super::CodeGen for X86_64 {
         file: &mut std::fs::File,
         data: &std::collections::HashMap<String, UninitData>,
     ) -> Result<(), std::io::Error> {
-        writeln!(file, "segment .bss")?;
-        writeln!(file, "  frame_start_ptr: resq 1")?;
-        writeln!(file, "  frame_end_ptr: resq 1")?;
-        writeln!(file, "  frame_stack: resq 1048576")?;
+        writeln!(file, "segment readable writeable")?;
+        writeln!(file, "  frame_start_ptr: rq 1")?;
+        writeln!(file, "  frame_end_ptr: rq 1")?;
+        writeln!(file, "  frame_stack: rq 1048576")?;
         writeln!(file, "  frame_stack_end:")?;
 
         for (id, data) in data {
             match data {
-                UninitData::Region(size) => writeln!(file, "  {id}: resq {size}")?,
+                UninitData::Region(size) => writeln!(file, "  {id}: rq {size}")?,
             }
         }
 

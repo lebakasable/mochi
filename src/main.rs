@@ -26,7 +26,7 @@
 //! 4. Typed Expressions are converted into backend instructions
 //! 5. Instructions are converted into assembly.
 //!  
-//! Then `nasm` and `ld` are used to assemble and link the generated program.
+//! Then `fasm` is used to assemble the generated program.
 //!
 //! ## Lexing/Scanning
 //! This is the process of turning the raw text file into meaningful units
@@ -121,8 +121,7 @@
 //!
 //! ## Code Generation
 //! The last step of this compiler is to emit the generated code. The compiler
-//! emits x86-64 assembly, which will be assembled and linked by `nasm` and `ld`
-//! respectively.
+//! emits x86-64 assembly, which will be assembled by `fasm`.
 //!
 //! Code generation works by converting each [`backend::Instruction`] into a
 //! small piece of assembly. It is __required__ that each instruction works

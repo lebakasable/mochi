@@ -1,5 +1,5 @@
 {
   "exit_code": 0,
-  "stdout": "[CMD]: nasm -felf64 src/tests/functional/vec_formatting.asm\n[CMD]: ld -o vec_formatting src/tests/functional/vec_formatting.o\n",
+  "stdout": "[CMD]: fasm src/tests/functional/vec_formatting.asm\n[CMD]: chmod +x src/tests/functional/vec_formatting\n",
   "stderr": ""
 }

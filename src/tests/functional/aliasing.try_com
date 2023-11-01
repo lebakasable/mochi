@@ -1,5 +1,5 @@
 {
   "exit_code": 0,
-  "stdout": "[CMD]: nasm -felf64 src/tests/functional/aliasing.asm\n[CMD]: ld -o aliasing src/tests/functional/aliasing.o\n",
+  "stdout": "[CMD]: fasm src/tests/functional/aliasing.asm\n[CMD]: chmod +x src/tests/functional/aliasing\n",
   "stderr": ""
 }

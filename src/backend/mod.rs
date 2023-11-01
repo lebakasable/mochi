@@ -1,8 +1,8 @@
 mod instruction;
-mod x86_64_nasm;
+mod x86_64_fasm;
 pub use instruction::*;
 use std::collections::HashMap;
-pub use x86_64_nasm::*;
+pub use x86_64_fasm::*;
 
 pub trait CodeGen {
     fn encode_name(label: &str) -> String;

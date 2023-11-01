@@ -1,5 +1,5 @@
 {
   "exit_code": 0,
-  "stdout": "[CMD]: nasm -felf64 examples/interfaces.asm\n[CMD]: ld -o interfaces examples/interfaces.o\n",
+  "stdout": "[CMD]: fasm examples/interfaces.asm\n[CMD]: chmod +x examples/interfaces\n",
   "stderr": ""
 }

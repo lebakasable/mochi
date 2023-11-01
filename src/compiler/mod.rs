@@ -28,19 +28,18 @@ pub fn compile_mochi(input_path: String, run: bool) -> Result<(), MocError> {
 
     // assembler
     run_command(
-        "nasm",
-        vec!["-felf64", path.with_extension("asm").to_str().unwrap()],
+        "fasm",
+        vec![path.with_extension("asm").to_str().unwrap()],
         &input_path,
         false,
     )?;
 
     // linker
     run_command(
-        "ld",
+        "chmod",
         vec![
-            "-o",
-            path.file_stem().unwrap().to_str().unwrap(),
-            path.with_extension("o").to_str().unwrap(),
+            "+x",
+            path.with_extension("").to_str().unwrap(),
         ],
         &input_path,
         false,
