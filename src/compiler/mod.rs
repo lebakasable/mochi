@@ -9,7 +9,7 @@ use std::process::{Command, Output};
 
 pub mod test_tools;
 
-pub fn compile_mochi(input_path: String, run: bool) -> Result<(), MocError> {
+pub fn compile_mochi(input_path: String, run: bool, keep_asm: bool) -> Result<(), MocError> {
     let stmts = Stmt::from_file_with_prelude(&input_path)?;
     let (mut types, mut global_env, mut init_data, uninit_data) =
         Stmt::build_types_and_data(stmts)?;
@@ -34,7 +34,6 @@ pub fn compile_mochi(input_path: String, run: bool) -> Result<(), MocError> {
         false,
     )?;
 
-    // linker
     run_command(
         "chmod",
         vec![
@@ -44,6 +43,15 @@ pub fn compile_mochi(input_path: String, run: bool) -> Result<(), MocError> {
         &input_path,
         false,
     )?;
+
+    if !keep_asm {
+        run_command(
+            "rm",
+            vec![path.with_extension("asm").to_str().unwrap()],
+            &input_path,
+            false,
+        )?;
+    }
 
     if run {
         // run the exe

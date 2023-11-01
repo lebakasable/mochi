@@ -142,11 +142,13 @@ struct Cli {
     file: String,
     #[clap(short, long)]
     run: bool,
+    #[clap(short = 'a', long)]
+    keep_asm: bool,
 }
 
 fn main() {
     let cli = Cli::parse();
-    if let Err(e) = compile_mochi(cli.file, cli.run) {
+    if let Err(e) = compile_mochi(cli.file, cli.run, cli.keep_asm) {
         e.report();
         std::process::exit(1);
     }
