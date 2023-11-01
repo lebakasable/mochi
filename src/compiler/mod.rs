@@ -56,7 +56,7 @@ pub fn compile_mochi(input_path: String, run: bool, keep_asm: bool) -> Result<()
     if run {
         // run the exe
         run_command(
-            format!("./{}", &path.file_stem().unwrap().to_str().unwrap()).as_str(),
+            format!("./{}", &path.with_extension("").to_str().unwrap()).as_str(),
             vec![],
             &input_path,
             true,
