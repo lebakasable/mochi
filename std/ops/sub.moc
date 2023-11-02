@@ -2,3 +2,10 @@ interface Sub<A B> {
     _: Output
     fn Op.sub(A B) -> [Output]
 }
+
+impl Sub<char char> {
+    u8: Output
+    fn Op.sub(char: a char: b) -> [u8] {
+        a cast(u8) b cast(u8) -
+    }
+}
