@@ -2,3 +2,10 @@ interface Mul<A B> {
     _: Output
     fn Op.mul(A B) -> [Output]
 }
+
+impl Mul<*u64 *u64> {
+    u64: Output
+    fn Op.mul(*u64: a *u64: b) -> [u64] {
+        a @ b @ *
+    }
+}
