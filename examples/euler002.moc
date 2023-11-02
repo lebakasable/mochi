@@ -1,0 +1,13 @@
+fn main() {
+    var u64: acc
+
+    1 2 while over 4000000 < do {
+        over 2 % 0 == if {
+            over acc @ + acc !
+        }
+
+        swap over +
+    } drop drop
+
+    acc @ println
+}

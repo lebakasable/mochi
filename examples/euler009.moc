@@ -1,0 +1,21 @@
+fn main() {
+    var u64: a
+    var u64: b
+    var u64: c
+
+    1 while dup 1000 < do {
+        dup a !
+        1 while dup a @ + 1000 < do {
+            dup b !
+            1000 a @ - b @ - c !
+
+            a @ dup * b @ dup * + c @ dup * == if {
+                a @ b @ * c @ * println
+                drop drop return
+            }
+
+            1 +
+        } drop
+        1 +
+    } drop
+}

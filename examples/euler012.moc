@@ -1,0 +1,25 @@
+inline fn tri(u64) -> [u64] { dup 1 + * 2 / }
+
+fn count_div(u64) -> [u64] {
+    0 as [mut result]
+    1 while over over dup * > do {
+        over over % 0 == if {
+            result 1 + *result !
+        }
+        1 +
+    }
+    dup * == if { 1 } else { 0 }
+    result 2 *
+    +
+}
+
+fn main() {
+    1 while 
+        dup tri
+        dup count_div 500 <= if {
+            drop true
+        } else {
+            println false
+        }
+    do { 1 + } drop
+}

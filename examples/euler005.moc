@@ -1,0 +1,48 @@
+fn main() {
+    var u64[20]: acc
+    var u64[20]: tmp
+    var u64: ans
+
+    2 while dup 20 <= do {
+        0 while dup 20 < do {
+            0 over tmp @ Arr.get_ref_mut !
+            1 +
+        } drop
+
+        dup 2 while over 1 > do {
+            over over % 0 == if {
+                dup tmp @ Arr.get_ref_mut dup @ 1 + swap !
+                swap over / swap
+            } else {
+                1 +
+            }
+        } drop drop
+
+        0 while dup 20 < do {
+            dup  acc @ Arr.get
+            over tmp @ Arr.get
+            < if {
+                dup  tmp @ Arr.get
+                over acc @ Arr.get_ref_mut
+                !
+            }
+
+            1 +
+        } drop
+
+        1 +
+    } drop
+
+    1 ans !
+
+    0 while dup 20 < do {
+        dup acc @ Arr.get while dup 0 > do {
+            over ans @ * ans !
+            1 -
+        } drop
+
+        1 +
+    } drop
+
+    ans @ println
+}

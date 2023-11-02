@@ -1,0 +1,28 @@
+fn is_prime(u64: n &Vec<u64>: primes) -> [bool] {
+    n 0
+    while
+        over over primes Vec.at Option.unwrap dup * >= if {
+            over over primes Vec.at Option.unwrap % 0 !=
+        } else {
+            false
+        }
+    do { 1 + }
+    primes Vec.at Option.unwrap dup * <
+}
+
+fn main() {
+    1000000 Vec.with_capacity::<u64> as [mut primes]
+
+    2 as [mut ans]
+    ans *primes Vec.push
+
+    3 while dup 2000000 < do {
+        dup &primes is_prime if {
+            dup *primes Vec.push
+            dup ans + *ans !
+        }
+        1 +
+    } drop
+
+    ans println
+}

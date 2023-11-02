@@ -1,0 +1,30 @@
+fn main() {
+    var u64: ans
+
+    100 while dup 1000 < do {
+        100 while dup 1000 < do {
+            over over *
+
+            dup 0 while over 0 > do {
+                10 *
+                over 10 %
+                +
+                swap 10 / swap
+            }
+            swap drop
+
+            over over == if {
+                dup ans @ > if {
+                    ans over swap !
+                }
+            }
+
+            drop drop
+            1 +
+        } drop
+
+        1 +
+    } drop
+    
+    ans @ println
+}

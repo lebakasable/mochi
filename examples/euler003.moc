@@ -1,0 +1,11 @@
+fn main() {
+    600851475143 2 while over 1 > do {
+        over over % 0 == if {
+            swap over / swap
+        } else {
+            1 +
+        }
+    }
+
+    println drop
+}

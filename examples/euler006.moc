@@ -1,0 +1,14 @@
+fn main() {
+    0 1 while dup 100 <= do {
+        swap over dup * + swap
+        1 +
+    } drop
+
+    0 1 while dup 100 <= do {
+        swap over + swap
+        1 +
+    } drop
+
+    dup *
+    swap - print
+}
