@@ -261,7 +261,10 @@ impl super::CodeGen for X86_64 {
                 writeln!(out, "  jz {hash}_jmp_dest_{dest_id}")?;
             }
             Instruction::JumpDest { id } => writeln!(out, "{hash}_jmp_dest_{id}:")?,
-            Instruction::PushU64(n) => writeln!(out, "  push {n}")?,
+            Instruction::PushU64(n) => {
+                writeln!(out, "  mov rax, {n}")?;
+                writeln!(out, "  push rax")?;
+            },
             Instruction::PushGlobal { id } => writeln!(out, "  push {id}")?,
             Instruction::Call(func) => {
                 let hash = X86_64::encode_name(func);
