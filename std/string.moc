@@ -70,6 +70,18 @@ impl:
     inline fn String.at(u64: idx &String: self) -> [Option<char>] {
         idx self::chars Vec.at
     }
+
+    fn String.replace(char: replace char: by String: mut self) -> [String] {
+        0 while dup &self String.size < do {
+            as [i]
+            i *self::chars Vec.get_mut Option.unwrap as [mut to]
+            to @ replace == if {
+                by to !
+            }
+            i 1 +
+        } drop
+        self
+    }
 }
 
 impl ToString<String> {
