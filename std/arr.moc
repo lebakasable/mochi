@@ -55,4 +55,11 @@ impl:
         } drop drop
 
     }
+
+    fn Arr.fill<T>(T: item Arr<T>: arr) {
+        0 while dup arr::size < do {
+            item over arr Arr.set
+            1 +
+        } drop
+    }
 }
