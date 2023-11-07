@@ -1,3 +1,4 @@
 include "std/sys/x86_64.moc"
 
-inline fn exit(u64) -> [!] { sys_exit }
+inline fn exit(u64) -> [!]   {   sys_exit }
+inline fn time()    -> [u64] { 0 sys_time }

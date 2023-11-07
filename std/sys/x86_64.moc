@@ -9,3 +9,4 @@ inline fn sys_mmap(u64: off u64: fd u64: flags u64: prot u64: len *u8: addr) -> 
     off fd flags prot len addr 9 syscall(6) cast(*u8)
 }
 inline fn sys_exit(u64)                      { 60 syscall(1) drop   }
+inline fn sys_time(u64)            -> [u64]  { 201 syscall(1)       }
