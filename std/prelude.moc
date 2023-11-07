@@ -64,3 +64,20 @@ inline fn lor(bool: a bool: b) -> [bool] {
         b if { true } else { false }
     }
 }
+
+var u64: rand_state
+
+inline fn srand(u64) {
+    rand_state !
+}
+
+inline fn RAND_A() -> [u64] 6364136223846793005
+inline fn RAND_C() -> [u64] 1442695040888963407
+
+inline fn rand() -> [u64] {
+    rand_state @
+    RAND_A *
+    RAND_C +
+    dup
+    rand_state !
+}
