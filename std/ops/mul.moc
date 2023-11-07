@@ -9,3 +9,10 @@ impl Mul<*u64 *u64> {
         a @ b @ *
     }
 }
+
+impl Mul<u64 *u64> {
+    u64: Output
+    fn Op.mul(u64: a *u64: b) -> [u64] {
+        a b @ *
+    }
+}
