@@ -1,0 +1,125 @@
+enum struct Cell {
+    []: Empty
+    []: Mine
+}
+
+struct Field {
+    pub Arr<Cell>: cells
+    pub Arr<bool>: open
+    pub u64: rows
+    pub u64: cols
+impl:
+    fn Field.new(u64: rows u64: cols) -> [Field] {
+        rows cols * malloc::<Cell>
+        rows cols * malloc::<bool>
+        rows cols cast(Field)
+    }
+
+    fn Field.random_cell(Field: self) -> [Cell u64 u64] {
+        rand self::rows % as [row]
+        rand self::cols % as [col]
+        row col self Field.get
+        col row
+    }
+
+    fn Field.randomize(u64: mines% Field: self) {
+        Cell::Empty self::cells Arr.fill
+        false self::open Arr.fill
+        mines% 100 > if { 100 } else { mines% } as [safe_mines%]
+        self::rows self::cols * safe_mines% * 99 + 100 /
+        0 while over over swap < do {
+            0 0 as [mut row mut col]
+            true while do {
+                self Field.random_cell
+                *row ! *col !
+                match {
+                    Cell::Empty { false }
+                    Cell::Mine  { true }
+                }
+            }
+            row col Cell::Mine self Field.set
+            1 +
+        } drop drop
+    }
+
+    fn Field.get(u64: row u64: col Field: self) -> [Cell] {
+        row self::cols * col + self::cells Arr.get
+    }
+
+    fn Field.checked_get(u64: row u64: col *Cell: cell Field: self) -> [bool] {
+        0 row <= row self::rows < land 0 col <= land col self::cols < land
+        dup if {
+            row col self Field.get cell !
+        }
+    }
+
+    fn Field.set(u64: row u64: col Cell: cell Field: self) {
+        cell row self::cols * col + self::cells Arr.set
+    }
+
+    fn Field.is_open(u64: row u64: col Field: self) -> [bool] {
+        row self::cols * col + self::open Arr.get
+    }
+
+    fn Field.count_nbors(u64: row u64: col Field: self) -> [u64] {
+        0 as [mut count]
+        0 1 - while dup 1 <= do {
+            as [drow]
+            0 1 - while dup 1 <= do {
+                as [dcol]
+                drow 0 != dcol 0 != lor if {
+                    var Cell: cell
+                    row drow + col dcol + cell self Field.checked_get if {
+                        cell @ match {
+                            Cell::Empty {}
+                            Cell::Mine {
+                                count 1 + *count !
+                            }
+                        }
+                    }
+                }
+                dcol 1 +
+            } drop
+            drow 1 +
+        } drop
+        count
+    }
+}
+
+impl Print<Field> {
+    fn print(Field: field) {
+        0 while dup field::rows < do {
+            as [row]
+            0 while dup field::cols < do {
+                as [col]
+                ' ' print
+                row col field Field.is_open if {
+                    row col field Field.get match {
+                        Cell::Empty {
+                            row col field Field.count_nbors
+                            dup 0 > if {
+                                print
+                            } else {
+                                drop ' ' print
+                            }
+                        }
+                        Cell::Mine { '*' print }
+                    }
+                } else {
+                    '#' print
+                }
+                ' ' print
+                col 1 +
+            } drop
+            '\n' print
+            row 1 +
+        } drop
+    }
+}
+
+fn main() {
+    time srand
+    10 10 Field.new as [field]
+    20 field Field.randomize
+    field println
+}
