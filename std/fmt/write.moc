@@ -1,3 +1,8 @@
 interface Write<T> {
     fn write(T: to_write u64: file_descriptor)
+
+    fn writeln(T: to_write u64: file_descriptor) {
+        to_write file_descriptor write
+        '\n' file_descriptor write
+    }
 }
