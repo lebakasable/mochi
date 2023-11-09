@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/logo.jpg" width="200" />
+    <img src="assets/logo.svg" width="200" />
 
 # mochi
 </div>

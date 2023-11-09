@@ -2,6 +2,9 @@ struct Arr<T> {
     pub u64: size
     pub *T: data
 impl:
+    inline fn Arr.size<T>(Arr<T>: arr) -> [u64] arr::size
+    inline fn Arr.data<T>(Arr<T>: arr) -> [*T]  arr::data
+
     fn Arr.set<T>(T: value u64: idx Arr<T>: arr) {
         idx arr::size >= if {
             "Cannot Set: Index out of bounds: " print
