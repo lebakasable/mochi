@@ -213,6 +213,7 @@ impl Scanner {
             }
             '|' => self.add_token(TokenKind::Operator(Operator::Pipe)),
             '^' => self.add_token(TokenKind::Operator(Operator::Caret)),
+            '~' => self.add_token(TokenKind::Operator(Operator::Tilde)),
             ' ' | '\t' | '\r' => (),
             '\n' => self.newline(),
             '"' => self.string()?,

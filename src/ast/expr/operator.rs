@@ -135,6 +135,14 @@ impl ExprOperator {
                 Variance::Variant,
                 String::from("Op.shr"),
             ),
+            Operator::Tilde => self.type_check_interface_op(
+                stack,
+                types,
+                global_env,
+                Signature::new(vec![Type::U64.id()], vec![Type::U64.id()]),
+                Variance::Variant,
+                String::from("Op.not"),
+            ),
             Operator::LessThan
             | Operator::LessEqual
             | Operator::GreaterThan

@@ -1,0 +1,4 @@
+interface BitNot<A B> {
+    _: Output
+    fn Op.not(A B) -> [Output]
+}

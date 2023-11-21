@@ -198,6 +198,11 @@ impl super::CodeGen for X86_64 {
                     writeln!(out, "  shr  rax, cl")?;
                     writeln!(out, "  push rax")?;
                 }
+                Operator::Tilde => {
+                    writeln!(out, "  pop  rax")?;
+                    writeln!(out, "  not  rax")?;
+                    writeln!(out, "  push rax")?;
+                }
                 Operator::Unary { .. } => unreachable!(
                     "Unary expressions should have been converted into other instructions",
                 ),

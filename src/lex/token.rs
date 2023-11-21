@@ -80,6 +80,7 @@ pub enum Operator {
     Caret,
     ShiftRight,
     ShiftLeft,
+    Tilde,
     Unary(Box<Token>),
 }
 
@@ -104,7 +105,8 @@ impl PartialEq for Operator {
             | (Operator::Pipe, Operator::Pipe)
             | (Operator::Caret, Operator::Caret)
             | (Operator::ShiftRight, Operator::ShiftRight)
-            | (Operator::ShiftLeft, Operator::ShiftLeft) => true,
+            | (Operator::ShiftLeft, Operator::ShiftLeft)
+            | (Operator::Tilde, Operator::Tilde) => true,
             (Operator::Plus, _)
             | (Operator::Minus, _)
             | (Operator::Star, _)
@@ -123,7 +125,8 @@ impl PartialEq for Operator {
             | (Operator::Pipe, _)
             | (Operator::Caret, _)
             | (Operator::ShiftRight, _)
-            | (Operator::ShiftLeft, _) => false,
+            | (Operator::ShiftLeft, _)
+            | (Operator::Tilde, _) => false,
         }
     }
 }
@@ -150,6 +153,7 @@ impl std::fmt::Display for Operator {
             Operator::Caret => write!(f, "^")?,
             Operator::ShiftRight => write!(f, ">>")?,
             Operator::ShiftLeft => write!(f, "<<")?,
+            Operator::Tilde => write!(f, "~")?,
             Operator::Unary(op) => write!(f, "Unary({})", op.lexeme)?,
         }
         write!(f, "`")
