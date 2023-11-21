@@ -1,0 +1,31 @@
+fn main() {
+    time srand
+
+    rand 101 % as [answer]
+
+    var bool: dead
+    10 as [mut lives]
+    while dead @ lnot do {
+        "Enter a number between 0 and 100: " input
+        Str.to_int as [guess]
+
+        guess answer < if {
+            "Too small!" println
+            lives 1 - *lives !
+        } else guess answer > if {
+            "Too big!" println
+            lives 1 - *lives !
+        } else {
+            "You won!" println
+            true dead !
+        }
+
+        lives 0 == if {
+            true dead !
+        }
+    }
+
+    dead @ if {
+        "You loose!" stderr writeln
+    }
+}

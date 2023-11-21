@@ -33,6 +33,13 @@ impl:
         Str.equals 
     }
 
+    fn Str.to_int(Str: mut s) -> [u64] {
+        0
+        while s::data @ char.is_digit do {
+            10 * s::data @ '0' - +
+            s::data 1 ptr+ *s::data !
+        }
+    }
 }
 
 impl Write<Str> {

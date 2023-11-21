@@ -81,3 +81,13 @@ inline fn rand() -> [u64] {
     dup
     rand_state !
 }
+
+fn read_line() -> [Str] {
+    1024 malloc::<char> as [buf]
+    buf::size buf::data stdin sys_read assert
+    buf::size buf::data cast(Str)
+}
+
+inline fn input(Str) -> [Str] {
+    print read_line
+}

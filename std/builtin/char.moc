@@ -2,6 +2,10 @@ inline fn char.as_str(&char) -> [Str] {
     1 swap cast(Str)
 }
 
+inline fn char.is_digit(char: c) -> [bool] {
+    c '0' >= c '9' <= land
+}
+
 impl Write<char> {
     inline fn write(char: c u64: fd) {
         &c char.as_str fd write
