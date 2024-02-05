@@ -1,5 +1,5 @@
 [package]
-name = "mochi"
+name = "mochi-lang"
 description = "A Rusty concatenative programming language"
 version = "0.1.0"
 license = "MIT"
