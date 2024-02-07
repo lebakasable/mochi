@@ -1,1 +1,3 @@
 - Add WebAssembly support
+	-> Add C target to compile with clang (or emscripten) to WASM
+	|> Add WaT target to compile directly to WASM
